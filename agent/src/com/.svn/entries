@@ -1,0 +1,46 @@
+10
+
+dir
+226
+http://user/svn/agent/agent/src/com
+http://user/svn/agent
+
+
+
+2016-09-30T09:06:59.929968Z
+224
+liu
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2eb52eb7-8269-5443-bccb-c74a935d5441
+
+service
+dir
+
+dao
+dir
+
+servlet
+dir
+
+filter
+dir
+
+entity
+dir
+
+tool
+dir
+

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/agent/!svn/ver/225/agent/WebRoot/pages/org/role
+END
+role-edit.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/agent/!svn/ver/225/agent/WebRoot/pages/org/role/role-edit.jsp
+END
+role-add.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/agent/!svn/ver/3/agent/WebRoot/pages/org/role/role-add.jsp
+END
+role-grant.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/agent/!svn/ver/3/agent/WebRoot/pages/org/role/role-grant.jsp
+END
+role-info.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/agent/!svn/ver/225/agent/WebRoot/pages/org/role/role-info.jsp
+END
+role-list.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/agent/!svn/ver/225/agent/WebRoot/pages/org/role/role-list.jsp
+END

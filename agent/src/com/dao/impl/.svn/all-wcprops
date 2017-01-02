@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/agent/!svn/ver/221/agent/src/com/dao/impl
+END
+LianXiRenDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/agent/!svn/ver/87/agent/src/com/dao/impl/LianXiRenDaoImpl.java
+END
+CustomerTypeTbDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/agent/!svn/ver/63/agent/src/com/dao/impl/CustomerTypeTbDaoImpl.java
+END
+RoleDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/agent/!svn/ver/221/agent/src/com/dao/impl/RoleDaoImpl.java
+END
+WebSiteDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/agent/!svn/ver/162/agent/src/com/dao/impl/WebSiteDaoImpl.java
+END
+MenuDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/agent/!svn/ver/221/agent/src/com/dao/impl/MenuDaoImpl.java
+END
+CompanyDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/agent/!svn/ver/183/agent/src/com/dao/impl/CompanyDaoImpl.java
+END
+ReportListDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/agent/!svn/ver/162/agent/src/com/dao/impl/ReportListDaoImpl.java
+END
+LicenseTbDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/agent/!svn/ver/197/agent/src/com/dao/impl/LicenseTbDaoImpl.java
+END
+FinaceTbDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/agent/!svn/ver/138/agent/src/com/dao/impl/FinaceTbDaoImpl.java
+END
+DiscountTbDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/agent/!svn/ver/190/agent/src/com/dao/impl/DiscountTbDaoImpl.java
+END
+UserDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/agent/!svn/ver/221/agent/src/com/dao/impl/UserDaoImpl.java
+END
+PrepaymentDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/agent/!svn/ver/90/agent/src/com/dao/impl/PrepaymentDaoImpl.java
+END
+KeywordDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/agent/!svn/ver/205/agent/src/com/dao/impl/KeywordDaoImpl.java
+END
+RiZhiDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/agent/!svn/ver/217/agent/src/com/dao/impl/RiZhiDaoImpl.java
+END
+ServiceTbDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/agent/!svn/ver/138/agent/src/com/dao/impl/ServiceTbDaoImpl.java
+END

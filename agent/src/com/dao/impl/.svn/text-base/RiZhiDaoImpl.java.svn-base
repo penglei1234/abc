@@ -1,0 +1,121 @@
+package com.dao.impl;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import com.dao.BaseDao;
+import com.dao.RiZhiDao;
+import com.entity.RiZhi;
+import com.tool.Page;
+
+public class RiZhiDaoImpl extends BaseDao implements RiZhiDao{
+	
+	@Override
+	public List<RiZhi> selectAll(Page page,String rzname,String beginDate,String endDate) {
+		// 创建集合，用于存储客户端的筛选条件（查询条件）
+		List<Object> params=new ArrayList<Object>();
+		StringBuffer sql=new StringBuffer("select * from rizhi where 1=1 ");
+		if(rzname!=null&&!"".equals(rzname)){
+			sql.append(" and rzname like ?");
+			// 如果查询条件的用户名不为空，则将用户名加入到集合中
+			params.add("%"+rzname+"%");
+		}
+		if (beginDate!=null&&!"".equals(beginDate)) {
+			sql.append(" and rztime> ?");
+			// 如果查询条件的创建时间不为空，则将创建时间加入到集合中
+			params.add(beginDate);
+		}
+		if (endDate!=null&&!"".equals(endDate)) {
+			sql.append(" and rztime< ?");
+			// 如果查询条件的创建时间不为空，则将创建时间加入到集合中
+			params.add(endDate);
+		}
+		
+		// 向集合中加入分页的参数
+		sql.append(" order by rzid asc");
+		sql.append(" limit ?,?");
+		params.add((page.getPageNow()-1) *page.getPageSize());
+		params.add(page.getPageSize());
+		List<RiZhi> riZhiList=new ArrayList<RiZhi>();
+		try {
+			rs=query(sql.toString(),params.toArray());
+			while(rs.next()){
+				RiZhi riZhi=new RiZhi();
+				riZhi.setRzid(rs.getInt("rzid"));
+				riZhi.setRzname(rs.getString("rzname"));
+				riZhi.setRztext(rs.getString("rztext"));
+				riZhi.setRztime(rs.getDate("rztime"));
+				riZhiList.add(riZhi);
+			}
+			return riZhiList;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			closeAll(rs, ps, con);
+		}
+		return null;
+	}
+
+	@Override
+	public int selectPageSize(String rzname,String beginDate,String endDate) {
+		StringBuffer sql=new StringBuffer("select count(1)  from rizhi where 1=1");
+		List<Object> params=new ArrayList<Object>();
+		if(rzname!=null&&!"".equals(rzname)){
+			sql.append(" and rzname like ?");
+			// 如果查询条件的用户名不为空，则将用户名加入到集合中
+			params.add("%"+rzname+"%");
+		}
+		if (beginDate!=null&&!"".equals(beginDate)) {
+			sql.append(" and rztime> ?");
+			// 如果查询条件的创建时间不为空，则将创建时间加入到集合中
+			params.add(beginDate);
+		}
+		if (endDate!=null&&!"".equals(endDate)) {
+			sql.append(" and rztime< ?");
+			// 如果查询条件的创建时间不为空，则将创建时间加入到集合中
+			params.add(endDate);
+		}
+		try {
+			rs=query(sql.toString(),params.toArray());
+			if(rs.next()){
+				//int pageSize=rs.getInt("pageSize");
+				return rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			closeAll(rs, ps, con);
+		}
+		return 0;
+	}
+
+	/*@Override
+	public List<RiZhi> selectA(Page page) {
+	String sql="select * from rizhi where limit ?,?";
+	ResultSet rs=null;
+	try {
+		rs=query(sql,(page.getPageNow()-1)*page.getPageSize(),page.getPageSize());
+			List<RiZhi> riZhiLists=new ArrayList<RiZhi>();
+			while(rs.next()){
+				RiZhi riZhi=new RiZhi();
+				riZhi.setRzid(rs.getInt("rzid"));
+				riZhi.setRzname(rs.getString("rzname"));
+				riZhi.setRztext(rs.getString("rztext"));
+				riZhi.setRztime(rs.getDate("rztime"));
+				riZhiLists.add(riZhi);
+			}
+			return riZhiLists;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			closeAll(rs, ps, con);
+		}
+		return null;
+	}*/
+
+	
+
+}

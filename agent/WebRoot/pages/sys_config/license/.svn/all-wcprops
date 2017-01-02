@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/agent/!svn/ver/195/agent/WebRoot/pages/sys_config/license
+END
+license-edit.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/agent/!svn/ver/195/agent/WebRoot/pages/sys_config/license/license-edit.jsp
+END
+license-add.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/agent/!svn/ver/195/agent/WebRoot/pages/sys_config/license/license-add.jsp
+END
+license-info.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/agent/!svn/ver/195/agent/WebRoot/pages/sys_config/license/license-info.jsp
+END
+license-list.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/agent/!svn/ver/195/agent/WebRoot/pages/sys_config/license/license-list.jsp
+END

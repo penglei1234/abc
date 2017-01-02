@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/agent/!svn/ver/199/agent/WebRoot/pages/proxy/customer
+END
+customer-edit.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/agent/!svn/ver/199/agent/WebRoot/pages/proxy/customer/customer-edit.jsp
+END
+customer-add.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/agent/!svn/ver/199/agent/WebRoot/pages/proxy/customer/customer-add.jsp
+END
+customer-charge.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/agent/!svn/ver/128/agent/WebRoot/pages/proxy/customer/customer-charge.jsp
+END
+customer-info.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/agent/!svn/ver/3/agent/WebRoot/pages/proxy/customer/customer-info.jsp
+END
+customer-list.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/agent/!svn/ver/188/agent/WebRoot/pages/proxy/customer/customer-list.jsp
+END

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/agent/!svn/ver/225/agent/WebRoot/pages/org/menu
+END
+menu-edit.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/agent/!svn/ver/225/agent/WebRoot/pages/org/menu/menu-edit.jsp
+END
+menu-add.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/agent/!svn/ver/3/agent/WebRoot/pages/org/menu/menu-add.jsp
+END
+menu-info.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/agent/!svn/ver/225/agent/WebRoot/pages/org/menu/menu-info.jsp
+END
+menu-list.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/agent/!svn/ver/3/agent/WebRoot/pages/org/menu/menu-list.jsp
+END

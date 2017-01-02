@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/agent/!svn/ver/223/agent/src/com/service
+END
+DiscountTbService.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/agent/!svn/ver/192/agent/src/com/service/DiscountTbService.java
+END
+UserService.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/agent/!svn/ver/175/agent/src/com/service/UserService.java
+END
+PrepaymentService.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/agent/!svn/ver/12/agent/src/com/service/PrepaymentService.java
+END
+KeywordService.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/agent/!svn/ver/206/agent/src/com/service/KeywordService.java
+END
+RiZhiService.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/agent/!svn/ver/218/agent/src/com/service/RiZhiService.java
+END
+ServiceTbService.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/agent/!svn/ver/149/agent/src/com/service/ServiceTbService.java
+END
+LianXiRenService.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/agent/!svn/ver/3/agent/src/com/service/LianXiRenService.java
+END
+CustomerTypeTbService.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/agent/!svn/ver/65/agent/src/com/service/CustomerTypeTbService.java
+END
+RoleService.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/agent/!svn/ver/223/agent/src/com/service/RoleService.java
+END
+WebSiteService.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/agent/!svn/ver/16/agent/src/com/service/WebSiteService.java
+END
+MenuService.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/agent/!svn/ver/223/agent/src/com/service/MenuService.java
+END
+CompanyService.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/agent/!svn/ver/186/agent/src/com/service/CompanyService.java
+END
+ReportListService.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/agent/!svn/ver/48/agent/src/com/service/ReportListService.java
+END
+LicenseTbService.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/agent/!svn/ver/192/agent/src/com/service/LicenseTbService.java
+END
+FinaceTbService.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/agent/!svn/ver/150/agent/src/com/service/FinaceTbService.java
+END

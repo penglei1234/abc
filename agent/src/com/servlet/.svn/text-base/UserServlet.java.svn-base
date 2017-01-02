@@ -1,0 +1,222 @@
+package com.servlet;
+
+import java.io.IOException;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.entity.Prepayment;
+import com.entity.Role;
+import com.entity.User;
+import com.service.RoleService;
+import com.service.UserService;
+import com.service.impl.RoleServiceImpl;
+import com.service.impl.UserServiceImpl;
+import com.tool.ExportExcel;
+import com.tool.Page;
+
+public class UserServlet extends HttpServlet {
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		doPost(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		UserService userService = new UserServiceImpl();
+		String method = req.getParameter("method");
+		if ("insert".equals(method)) {
+			insertUser(req, resp, userService);
+		} else if ("selectByuserRealName".equals(method)) {
+			selectByUserRealName(req, resp, userService);
+		} else if ("selectAllUser".equals(method)) {
+			selectAllUser(req, resp, userService);
+		} else if ("updateUserById".equals(method)) {
+			selectUserById(req, resp, userService);
+		} else if ("saveUser".equals(method)) {
+			updateUserByUserId(req, resp, userService);
+		} else if ("deleteUser".equals(method)) {
+			deleteUserByUserId(req, resp, userService);
+		} else if ("updateUserState".equals(method)) {
+			updateUserState(req, resp, userService);
+		} else if ("selectPrePayment".equals(method)) {
+			selectAllInfo(req, resp, userService);
+		}else if("exportExcel".equals(method)){
+			exportExcel(req, resp, userService);
+		}
+	}
+	private void exportExcel(HttpServletRequest req, HttpServletResponse resp,
+			UserService userService) throws ServletException, IOException {
+		String[] preids=req.getParameterValues("preids");
+		int[] id=new int[preids.length];
+		for (int i = 0; i < preids.length; i++) {
+			 id[i]=Integer.parseInt(preids[i]);
+		}
+		List<Prepayment> preList=userService.selectInfoById(id);
+		String rootPath=getServletContext().getRealPath("/");
+		String filePath=rootPath+"export\\"+UUID.randomUUID().toString()+".xls";
+		ExportExcel.exportExcel1(preList, filePath);
+		selectAllUser(req, resp, userService);
+		
+	}
+
+	private void selectAllInfo(HttpServletRequest req,
+			HttpServletResponse resp, UserService userService)
+			throws ServletException, IOException {
+		List<String> types=userService.selectAllFinaceType();
+		req.setAttribute("types", types);
+		String userId=req.getParameter("userId");
+		req.setAttribute("userId", userId);
+		//获取模糊查询的条件
+		String finaceType=req.getParameter("finaceType");
+		req.setAttribute("finaceType", finaceType);
+		String startDate=req.getParameter("startDate");
+		req.setAttribute("startDate", startDate);
+		String endDate=req.getParameter("endDate");
+		req.setAttribute("endDate", endDate);
+		//获取分页信息
+		String pageNum = req.getParameter("pageNow");
+		//创建page对象 封装分页信息
+		int pageIndex = pageNum == null || "".equals(pageNum) ? 1 : Integer.parseInt(pageNum);
+		Page page =null;
+		List<Prepayment> preList=null;
+		if(userId==null||"".equals(userId)){
+			page= new Page(pageIndex, 2,userService.selectPrepaymentRows(0, finaceType, startDate, endDate));
+			
+			preList = userService.selectAllInfo(0,page, finaceType, startDate, endDate);	
+		}else{
+			 page= new Page(pageIndex, 2,userService.selectPrepaymentRows(Integer.parseInt(userId), finaceType, startDate, endDate));
+			preList = userService.selectAllInfo(Integer.parseInt(userId),page, finaceType, startDate, endDate);
+		}
+		req.setAttribute("page", page);	
+		req.setAttribute("preList", preList);
+		req.getRequestDispatcher("pages/org/user/user-pay.jsp").forward(req,
+				resp);
+	}
+
+	private void updateUserState(HttpServletRequest req,
+			HttpServletResponse resp, UserService userService)
+			throws ServletException, IOException {
+		String userId = req.getParameter("userId");
+		userService.updateUserState(Integer.parseInt(userId));
+		selectAllUser(req, resp, userService);
+	}
+
+	private void deleteUserByUserId(HttpServletRequest req,
+			HttpServletResponse resp, UserService userService)
+			throws ServletException, IOException {
+		String userId = req.getParameter("userId");
+		userService.deleteUserByUserId(Integer.parseInt(userId));
+		selectAllUser(req, resp, userService);
+	}
+
+	private void updateUserByUserId(HttpServletRequest req,
+			HttpServletResponse resp, UserService userService)
+			throws ServletException, IOException {
+		String userId = req.getParameter("userId");
+		String logName = req.getParameter("userLogName");
+		String password = req.getParameter("userPassword");
+		String realName = req.getParameter("userRealName");
+		String idCard = req.getParameter("userIdCard");
+		String sex = req.getParameter("userSex");
+		String address = req.getParameter("userAddress");
+		String email = req.getParameter("userEmail");
+		String phone = req.getParameter("userPhone");
+		String state = req.getParameter("userState");
+		String roleName = req.getParameter("role");
+		Role role = new Role();
+		role.setRoleName(roleName);
+		// 创建User对象,封装信息!
+		User user = new User();
+		user.setUserId(Integer.parseInt(userId));
+		user.setUserLogName(logName);
+		user.setUserPassword(password);
+		user.setUserRealName(realName);
+		user.setUserSex(sex);
+		user.setUserIdCard(idCard);
+		user.setUserAddress(address);
+		user.setUserEmail(email);
+		user.setUserPhone(phone);
+		user.setUserState(Integer.parseInt(state));
+		user.setUserStartTime(new Date());
+		user.setRole(role);
+		userService.updateUserByUserId(user);
+		selectAllUser(req, resp, userService);
+	}
+
+	private void selectUserById(HttpServletRequest req,
+			HttpServletResponse resp, UserService userService)
+			throws ServletException, IOException {
+		// 用于查询所有的角色名
+		RoleService roleService = new RoleServiceImpl();
+		List<Role> roleList = roleService.selectAllRoleName();
+		req.setAttribute("roleList", roleList);
+		String userId = req.getParameter("userId");
+		User user = userService.selectUserById(Integer.parseInt(userId));
+		req.setAttribute("user", user);
+		req.getRequestDispatcher("pages/org/user/user-edit.jsp").forward(req,
+				resp);
+	}
+
+	private void insertUser(HttpServletRequest req, HttpServletResponse resp,
+			UserService userService) throws ServletException, IOException {
+		String logName = req.getParameter("userLogName");
+		String password = req.getParameter("userPassword");
+		String realName = req.getParameter("userRealName");
+		String idCard = req.getParameter("userIdCard");
+		String sex = req.getParameter("userSex");
+		String address = req.getParameter("userAddress");
+		String email = req.getParameter("userEmail");
+		String phone = req.getParameter("userPhone");
+		String state = req.getParameter("userState");
+		String roleName = req.getParameter("role");
+		Role role = new Role();
+		role.setRoleName(roleName);
+		// 创建User对象,封装信息!
+		User user = new User();
+		user.setUserLogName(logName);
+		user.setUserPassword(password);
+		user.setUserRealName(realName);
+		user.setUserSex(sex);
+		user.setUserIdCard(idCard);
+		user.setUserAddress(address);
+		user.setUserEmail(email);
+		user.setUserPhone(phone);
+		user.setUserState(Integer.parseInt(state));
+		user.setUserStartTime(new Date());
+		user.setRole(role);
+		userService.insertUser(user);
+		selectAllUser(req, resp, userService);
+	}
+
+	private void selectByUserRealName(HttpServletRequest req,
+			HttpServletResponse resp, UserService userService) {
+
+		String userRealName = req.getParameter("userRealName");
+	}
+
+	private void selectAllUser(HttpServletRequest req,
+			HttpServletResponse resp, UserService userService)
+			throws ServletException, IOException {
+		String realName = req.getParameter("realName");
+		String userState = req.getParameter("userState");
+		req.setAttribute("realName", realName);
+		req.setAttribute("userState", userState);
+		// 获取分页信息
+		String pageNum = req.getParameter("pageNow");
+		int pageIndex = pageNum == null || "".equals(pageNum) ? 1 : Integer.parseInt(pageNum);
+		Page page = new Page(pageIndex, 6, userService.selectAllRows(realName,userState));
+		req.setAttribute("page", page);
+		// 执行分页查询
+		List<User> userList = userService.selectAllUser(page, realName,userState);
+		req.setAttribute("userList", userList);
+		req.getRequestDispatcher("pages/org/user/user-list.jsp").forward(req,resp);
+	}
+}

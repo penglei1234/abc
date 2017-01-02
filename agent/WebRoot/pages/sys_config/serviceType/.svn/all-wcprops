@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/agent/!svn/ver/213/agent/WebRoot/pages/sys_config/serviceType
+END
+serType-info.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/agent/!svn/ver/139/agent/WebRoot/pages/sys_config/serviceType/serType-info.jsp
+END
+serType-list.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/agent/!svn/ver/139/agent/WebRoot/pages/sys_config/serviceType/serType-list.jsp
+END
+serType-edit.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/agent/!svn/ver/213/agent/WebRoot/pages/sys_config/serviceType/serType-edit.jsp
+END
+service-year.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/agent/!svn/ver/3/agent/WebRoot/pages/sys_config/serviceType/service-year.jsp
+END
+serType-add.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/agent/!svn/ver/139/agent/WebRoot/pages/sys_config/serviceType/serType-add.jsp
+END

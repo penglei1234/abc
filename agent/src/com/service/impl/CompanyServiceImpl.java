@@ -1,0 +1,68 @@
+package com.service.impl;
+
+import java.util.List;
+
+import com.dao.CompanyDao;
+import com.dao.impl.CompanyDaoImpl;
+import com.entity.Company;
+import com.entity.LianXiRen;
+import com.service.CompanyService;
+
+public class CompanyServiceImpl implements CompanyService {
+	CompanyDao companyDao=new CompanyDaoImpl();
+
+	@Override
+	public int insertCompany(Company company) {
+		return companyDao.insertCompany(company);
+	}
+
+	@Override
+	public int insertLianXiRen(LianXiRen lianxiren) {
+		return companyDao.insertLianXiRen(lianxiren);
+	}
+
+	@Override
+	public int selectCidByCname(String cname) {
+		return companyDao.selectCidByCname(cname);
+	}
+
+	@Override
+	public Company selectCompanyByCname(String cname) {
+		return companyDao.selectCompanyByCname(cname);
+	}
+
+	@Override
+	public List<Company> selectAll() {
+		return companyDao.selectAll();
+	}
+
+
+	@Override
+	public int updateCompanyState(int state,int cid) {
+		return companyDao.updateCompanyState(state,cid);
+	}
+
+	@Override
+	public int deleteCompany(int isdelete, int id) {
+
+		return companyDao.deleteCompany(isdelete, id);
+	}
+
+	@Override
+	public int updateCompany(Company company) {
+
+		return companyDao.updateCompany(company);
+	}
+
+	@Override
+	public int updateLianXiRen(LianXiRen lianxiren) {
+
+		return companyDao.updateLianXiRen(lianxiren);
+	}
+
+	@Override
+	public int updateCompanyBalance(double money, int id) {
+
+		return companyDao.updateCompanyBalance(money, id);
+	}
+}

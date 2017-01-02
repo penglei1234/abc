@@ -1,0 +1,43 @@
+package com.service;
+
+import java.util.List;
+
+import com.entity.Prepayment;
+import com.entity.User;
+import com.tool.Page;
+
+public interface UserService {
+	public int insertUser(User user);
+
+	public User selectUserById(int id);
+
+	public User selectUserByUserRealName(String userRealName);
+
+	public int selectMaxUserId();
+
+	public List<User> selectAllUser(Page page, String user_realname,
+			String user_state);
+
+	public int selectAllRows(String user_realname, String user_state);
+
+	public int updateUserByUserId(User user);
+
+	public int deleteUserByUserId(int userId);
+
+	public int updateUserState(int userId);
+
+	public User selectUserByUserLogNameAndUserPassword(String userLogName,
+			String userPassword);
+	
+	public int updateUserById(User user);
+	public List<String> selectAllFinaceType();
+
+	public List<Prepayment> selectAllInfo(int userId, Page page,
+			String finaceType, String startDate, String endDate);
+
+	public int selectPrepaymentRows(int userId, String finaceType,
+			String startDate, String endDate);
+
+	public List<Prepayment> selectInfoById(int[] preid);
+
+}

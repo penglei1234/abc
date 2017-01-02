@@ -1,0 +1,170 @@
+package com.servlet;
+
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.entity.Company;
+import com.entity.LianXiRen;
+import com.entity.User;
+import com.service.CompanyService;
+import com.service.WebSiteService;
+import com.service.impl.CompanyServiceImpl;
+import com.tool.DateUtil;
+
+public class CompanyServlet extends HttpServlet{
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doPost(request,response);
+	}
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+<<<<<<< .mine
+		
+		
+		
+		
+		
+		
+		
+		//获取传来的company的数据
+		String cname=request.getParameter("cname");
+		String cstmType=request.getParameter("cstmType");
+		String state=request.getParameter("state");
+		String lowyer=request.getParameter("lowyer");
+		String regtime=request.getParameter("regtime");
+		String licenseid=request.getParameter("licenseid");
+		String licensecard=request.getParameter("licensecard");
+		String country=request.getParameter("country");
+		String sheng=request.getParameter("sheng");
+		String shi=request.getParameter("shi");
+		String qu=request.getParameter("qu");
+		String fax=request.getParameter("fax");
+		String phone=request.getParameter("phone");
+		String address=request.getParameter("address");
+		String remark=request.getParameter("remark");
+		String isdelete=request.getParameter("isdelte");
+		String cweb=request.getParameter("cweb");
+		String balance=request.getParameter("balance");
+		//获取lianxiren传来的数据
+		String[] lxname=request.getParameterValues("lxname");
+		String[] lxphone=request.getParameterValues("lxphone");
+		String[] lxfax=request.getParameterValues("lxfax");
+		String[] lxemail=request.getParameterValues("email");
+		String[] lxdepartment=request.getParameterValues("department");
+		//创建company对象，将company属性加入到company对象中
+		Company company=new Company();
+=======
+		CompanyService companyService=new CompanyServiceImpl();
+		String method=request.getParameter("method");
+		if("save".equals(method)){
+			save(request, response, companyService);
+			
+		}
+>>>>>>> .r170
+		
+	}
+private void save(HttpServletRequest request, HttpServletResponse response, CompanyService companyService){
+		
+		//获取传来的company的数据
+				String cname=request.getParameter("cname");
+				String cstmType=request.getParameter("cstmType");
+				String state=request.getParameter("state");
+				String lowyer=request.getParameter("lowyer");
+				String regtime=request.getParameter("regtime");
+				String licenseid=request.getParameter("licenseid");
+				String licensecard=request.getParameter("licensecard");
+				String country=request.getParameter("country");
+				String sheng=request.getParameter("sheng");
+				String shi=request.getParameter("shi");
+				String qu=request.getParameter("qu");
+				String fax=request.getParameter("fax");
+				String phone=request.getParameter("phone");
+				String address=request.getParameter("address");
+				String remark=request.getParameter("remark");
+				String isdelete=request.getParameter("isdelte");
+				String cweb=request.getParameter("cweb");
+				String balance=request.getParameter("balance");
+				//获取lianxiren传来的数据
+				String[] lxname=request.getParameterValues("lxname");
+				String[] lxphone=request.getParameterValues("lxphone");
+				String[] lxfax=request.getParameterValues("lxfax");
+				String[] lxemail=request.getParameterValues("email");
+				String[] lxdepartment=request.getParameterValues("department");
+				//创建company对象，将company属性加入到company对象中
+				Company company=new Company();
+				
+				company.setCname(cname);
+				if("0".equals(cstmType)){
+					company.setTid(1);
+				}
+				else if("1".equals(cstmType)){
+					company.setTid(2);
+				}
+				else if("2".equals(cstmType)){
+					company.setTid(3);
+				}
+				company.setState(Integer.parseInt(state));
+				company.setLowyer(lowyer);
+				company.setRegtime(DateUtil.toDate(regtime));
+				company.setLicenseid(Integer.parseInt(licenseid));
+				company.setCountry(country);
+				company.setFax(fax);
+				company.setPhone(phone);
+				company.setAddress(address);
+				company.setLicensecard(licensecard);
+				company.setSheng(sheng);
+				company.setShi(shi);
+				company.setQu(qu);
+				company.setRemark(remark);
+				int value=isdelete==null||"".equals(isdelete)?1:Integer.parseInt(isdelete);
+				company.setIsdelete(value);
+				String web=cweb==null||"".equals(cweb)?"http://":cweb;
+				company.setCweb(web);
+				User user=(User)request.getSession().getAttribute("user");
+				company.setUserId(user.getUserId());
+				company.setUserName(user.getUserRealName());
+				double bala=balance==null||"".equals(balance)?0:Double.parseDouble(balance);
+				company.setBalance(bala);
+				//创建lianxiren集合，将lianxiren数据封装到集合中
+				CompanyService cs=new CompanyServiceImpl();
+				List<LianXiRen> lxrList=new ArrayList<LianXiRen>();
+				LianXiRen lxr = new LianXiRen();
+				if(lxname!=null){
+					for (int i = 0; i < lxname.length; i++) {		
+							lxr.setLxname(lxname[i]);
+							lxr.setPhone(lxphone[i]);
+							lxr.setFax(lxfax[i]);
+							lxr.setEmail(lxemail[i]);
+							lxr.setDepartment(lxdepartment[i]);
+							lxr.setCid(cs.selectCidByLxname(cname));
+							lxrList.add(lxr);
+					}
+				}
+				//调用service方法，将company对象传到service中，插入数据库
+				int row=cs.insertCompany(company);
+				if(row>0){
+					request.getRequestDispatcher("pages/proxy/customer/customer-list.jsp");
+				}else{
+					request.setAttribute("company",company);
+					request.getRequestDispatcher("#");
+				}
+				//遍历lianxiren集合。将数据插入到数据库中
+				for (LianXiRen lxren:lxrList) {
+					 cs.insertLianXiRen(lxren);
+				}
+				request.setAttribute("lxrList", lxrList);
+				request.getRequestDispatcher("pages/proxy/customer/customer-edit.jsp");
+	}
+}
+	

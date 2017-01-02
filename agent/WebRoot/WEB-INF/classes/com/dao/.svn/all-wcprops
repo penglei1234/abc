@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/agent/!svn/ver/221/agent/src/com/dao
+END
+FinaceTbDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/agent/!svn/ver/138/agent/src/com/dao/FinaceTbDao.java
+END
+DiscountTbDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/agent/!svn/ver/194/agent/src/com/dao/DiscountTbDao.java
+END
+UserDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/agent/!svn/ver/172/agent/src/com/dao/UserDao.java
+END
+KeywordDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/agent/!svn/ver/204/agent/src/com/dao/KeywordDao.java
+END
+PrepaymentDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/agent/!svn/ver/89/agent/src/com/dao/PrepaymentDao.java
+END
+RiZhiDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/agent/!svn/ver/216/agent/src/com/dao/RiZhiDao.java
+END
+ServiceTbDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/agent/!svn/ver/138/agent/src/com/dao/ServiceTbDao.java
+END
+CustomerTypeTbDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/agent/!svn/ver/63/agent/src/com/dao/CustomerTypeTbDao.java
+END
+LianXiRenDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/agent/!svn/ver/3/agent/src/com/dao/LianXiRenDao.java
+END
+RoleDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/agent/!svn/ver/221/agent/src/com/dao/RoleDao.java
+END
+WebSiteDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/agent/!svn/ver/13/agent/src/com/dao/WebSiteDao.java
+END
+MenuDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/agent/!svn/ver/221/agent/src/com/dao/MenuDao.java
+END
+CompanyDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/agent/!svn/ver/184/agent/src/com/dao/CompanyDao.java
+END
+ReportListDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/agent/!svn/ver/47/agent/src/com/dao/ReportListDao.java
+END
+LicenseTbDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/agent/!svn/ver/194/agent/src/com/dao/LicenseTbDao.java
+END
+BaseDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/agent/!svn/ver/3/agent/src/com/dao/BaseDao.java
+END

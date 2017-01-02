@@ -1,0 +1,134 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<%@ taglib prefix="p" uri="/WEB-INF/pageTag.tld"  %>
+<html>
+<head>
+	<base href="<%=basePath%>"	/>
+
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title></title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript">
+	function selectCompany(){
+		if (confirm('查询数据？')) {
+		//var cname=document.getElementById("cname");
+		//var userName=document.getElementById("userName");		
+		document.getElementById("form1").action="company?method=select";
+		document.getElementById("form1").submit();	
+		}else {
+			return;
+		}
+	}
+		
+</script>
+</head>
+<body>
+<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="3">
+  <tr>
+    <td style="height:25px; background-color:#f3f3f3; font-weight:bold" valign="top">
+    &nbsp;&nbsp;&nbsp;&nbsp;当前位置：
+    <img src="images/arrow.gif" align="absmiddle">&nbsp;&nbsp;代理商管理系统&nbsp;&nbsp; <img src="images/arrow.gif" align="absmiddle">&nbsp;&nbsp;代理商管理&nbsp;&nbsp; <img src="images/arrow.gif" align="absmiddle">&nbsp;&nbsp;代理商客户管理</td>
+  </tr>
+  <tr>
+    <td style="height:34px; background-image:url(images/main_header.gif); border-bottom:1px solid #cfd8e0; padding:0px">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="20" height="34"><img src="images/main_headerL.gif" width="20" height="34"></td>
+          <td style="color:#90c8e8;"><img src="images/icon_card.gif" width="16" height="16" align="absmiddle">&nbsp;&nbsp;<strong>代理商客户管理</strong></td>
+          <td align="right" class="white" style="padding-right:20px">
+		  <a href="pages/proxy/customer/customer-add.jsp" class="barBtn"><img src="images/5.png" align="absmiddle"> 新增</a> 
+		  <a href="#" class="barBtn" onClick="javascript:history.go(-1);"><img src="images/btn_left.gif" align="absmiddle"> 后退</a> 
+		  <a href="#" class="barBtn" onClick="javascript:history.go(+1);"><img src="images/btn_right.gif" align="absmiddle"> 前进</a> 
+		  <a href="#" class="barBtn"><img src="images/btn_refresh.gif" align="absmiddle"> 刷新</a>
+		  </td>
+        </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td style="height:30px; background-color:#bddbff; border-bottom:1px solid #cfd8e0;">
+    <form id="form1" method="post">
+    <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+      <TR>
+        <th width="10%" align="center">客户名称</th>
+        <td width="20%" class="BGCgray"><input type="text" id="cname" name="incname" value="${company.cname }"></td>
+        <th width="10%" align="center"><BUTTON style="HEIGHT:25px" onClick="return selectCompany()"><img src="images/btn_search.gif" width="16" height="16" align="absmiddle"> 查询</BUTTON></th>
+        </TR>
+    </table>
+    </form>
+    </td>
+  </tr>
+  <tr>
+    <td height="100%" valign="top">
+    <div style="overflow:auto;height:100%; width:100%">
+      <table width="100%" border="0" cellpadding="3" cellspacing="1" class="table1">
+        
+        <TR>
+          <th align="center"><input type="checkbox" name="checkbox" id="checkbox"></th>
+          <th align="center">序号</th>
+          <th align="center">客户名称</th>
+          <th align="center">法人代表</th>
+          <th align="center">注册时间</th>
+		  <th align="center">类型</th>
+		  <th align="center">状态</th>
+		  <th width="240px" align="center">操作</th>
+        </TR>
+        <c:forEach items="${companyList }" var="company" begin="0" step="1" end="20" varStatus="state">
+        <TR>
+        <TD align="center"><input type="checkbox" name="checkbox" id="checkbox"></TD>
+		  <TD align="center">${state.index+1 }</TD>
+          <TD align="center"><a href="company?method=view&flag=fromlist&id=${company.cid}">${company.cname }</a></TD>
+          <TD align="center">${company.lowyer }</TD>
+		  <TD align="center">${company.regtime }</TD>
+		  <TD align="center">${company.cstmTypeTb.cstmType }</TD>
+		  <TD align="center">${company.state=='0'?'未使用':'使用' }</TD>
+          <TD align="center">
+		  <input type="button" value="编辑" style="height:21px; font-size:12px;" onClick="location.href='company?method=view&flag=fromlist&id=${company.cid}'" />
+		  <input type="button" value="${company.state=='1'?'禁用':'启用' }" style="height:21px; font-size:12px;" onClick="location.href='company?method=update&state=${company.state }&id=${company.cid}'" /> 
+		  <input type="button" value="续费" style="height:21px; font-size:12px;" onClick="location.href='company?method=charge&id=${company.cid}'" /> 
+		  <input type="button" value="删除" style="height:21px; font-size:12px;" onClick="location.href='company?method=delete&flag=isdelete&isdelete=${company.isdelete }&id=${company.cid}'" />
+        </TR>
+        </c:forEach>
+        <p:page url="company?method=select&incname=${company.cname }&userName=${company.userName }&pageNow=" page="${page }"/>
+		<!-- <TR>
+          <TD align="center"><input type="checkbox" name="checkbox" id="checkbox"></TD>
+		  <TD align="center">1</TD>
+          <TD align="center"></TD>
+          <TD align="center"></TD>
+		  <TD align="center"></TD>
+		  <TD align="center"></TD>
+		  <TD align="center"></TD>
+          <TD align="center">
+		  <BUTTON style="height:21px; font-size:12px" onClick="javascript: location.href='customer-edit.jsp';">编辑</BUTTON> <BUTTON style="height:21px; font-size:12px" onClick="javascript:if (confirm('确认操作？')) alert('操作成功！');else return;">启用</BUTTON> <BUTTON style="height:21px; font-size:12px" onClick="javascript:location.href='customer-charge.jsp'">续费</BUTTON>  <BUTTON style="height:21px; font-size:12px" onClick="javascript:if (confirm('确认操作？')) alert('操作成功！');else return;">删除</BUTTON></TD>
+        </TR> -->
+      </table>
+      <!-- <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="20%" height="25"><table border="0" cellspacing="0" cellpadding="3">
+            <tr>
+              <td><a href="#"><img src="images/prev_top.gif" width="16" height="16" border="0" title="首页"></a></td>
+              <td><a href="#"><img src="images/prev.gif" width="16" height="16" border="0" title="上一页"></a></td>
+              <td><a href="#"><img src="images/next.gif" width="16" height="16" border="0" title="下一页"></a></td>
+              <td><a href="#"><img src="images/prev_end.gif" width="16" height="16" border="0" title="尾页"></a></td>
+            </tr>
+          </table></td>
+          <td width="20%" align="center"><table border="0" cellspacing="0" cellpadding="3">
+            <tr>
+              <td><a href="#"><img src="images/next.gif" width="16" height="16" border="0"></a></td>
+              <td><input name="textfield23" type="text" size="3" style="width:25;height:18">
+                /页</td>
+            </tr>
+          </table></td>
+          <td width="20%" align="right">共10条记录显示到1/1</td>
+        </tr>
+      </table> -->
+    </div>
+  </td>
+  </tr>
+</table>
+</body>
+</html>
